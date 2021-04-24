@@ -5,7 +5,7 @@ ARG COMPOSE_VERSION=
 ARG DOCKER_VERSION
 
 RUN apk add --no-cache py3-pip python3
-RUN apk add --update --no-cache --virtual \
+RUN apk add --no-cache --virtual \
   build-dependencies \
   cargo \
   gcc \
@@ -15,10 +15,9 @@ RUN apk add --update --no-cache --virtual \
   openssl-dev \
   python3-dev \
   rust \
-  nodejs \
-  npm \
   && pip3 install --no-cache-dir "docker-compose${COMPOSE_VERSION:+==}${COMPOSE_VERSION}" \
   && apk del build-dependencies
+RUN apk add --update nodejs npm
 RUN npm -v && node -v
 
 LABEL \
