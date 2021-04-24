@@ -18,7 +18,6 @@ RUN apk add --no-cache --virtual \
   && pip3 install --no-cache-dir "docker-compose${COMPOSE_VERSION:+==}${COMPOSE_VERSION}" \
   && apk del build-dependencies
 RUN apk add --update nodejs npm
-RUN npm -v && node -v
 
 LABEL \
   org.opencontainers.image.authors="Rizky Iqbal <rizkiiqbal36@gmail.com>" \
